@@ -29,13 +29,13 @@ original_slug: Apprendre/CSS/CSS_layout/Exemples_pratiques_de_positionnement
 <p><img alt="" src="https://mdn.mozillademos.org/files/13368/tabbed-info-box.png" style="display: block; height: 400px; margin: 0px auto; width: 450px;"></p>
 
 <div class="note">
-<p><strong>Note</strong>: You can see the finished example running live at <a href="http://mdn.github.io/learning-area/css/css-layout/practical-positioning-examples/info-box.html">info-box.html</a> (<a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/info-box.html">source code</a>). Check it out to get an idea of what you will be building in this section of the article.</p>
+<p><strong>Note</strong>: Vous pouvez voir l’exemple terminé en direct live à <a href="http://mdn.github.io/learning-area/css/css-layout/practical-positioning-examples/info-box.html">info-box.html</a> (<a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/info-box.html">source code</a>). Consultez-le pour avoir une idée de ce que vous allez construire dans cette section de l’article.</p>
 </div>
 
 <p>Vous pourriez vous dire "pourquoi ne pas créer des onglets séparés sous forme de pages web séparées, et faire en sorte que les onglets permettent de cliquer sur les pages séparées pour créer l'effet ?" Ce code serait plus simple, oui, mais alors chaque "page" séparée serait en fait une nouvelle page web, ce qui rendrait plus difficile la sauvegarde des informations entre les vues, et intégrerait cette fonctionnalité dans un design d'interface plus large. De plus, les applications dites " à page unique " deviennent très populaires - en particulier pour les interfaces Web mobiles - parce que le fait que tout soit servi dans un seul fichier réduit le nombre de requêtes HTTP nécessaires pour voir tout le contenu, ce qui améliore les performances.</p>
 
 <div class="note">
-<p><strong>Note</strong>: Some web developers take things even further, only having one page of information loaded at once, and dynamically changing the information shown using a JavaScript feature such as <a href="/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>. At this point in your learning however we want to keep things as simple as possible. There is some JavaScript later on, but only a tiny bit.</p>
+<p><strong>Note</strong>: Certains développeurs Web amènent les choses encore plus loin, n’ayant qu’une seule page d’informations chargée à la fois et modifiant dynamiquement les informations affichées à l’aide d’une fonctionnalité JavaScript telle que  <a href="/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>. À ce stade de votre apprentissage, cependant, nous voulons garder les choses aussi simples que possible. Il y a un peu de JavaScript plus tard, mais seulement un tout petit peu.</p>
 </div>
 
 <p>Pour commencer, nous aimerions que vous fassiez une copie locale du fichier HTML de départ — <a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/info-box-start.html">info-box-start.html</a>. Enregistrez ce fichier dans un endroit approprié sur votre ordinateur et ouvrez-le dans votre éditeur de texte. Examinons le HTML contenu dans le body:</p>
@@ -75,9 +75,9 @@ original_slug: Apprendre/CSS/CSS_layout/Exemples_pratiques_de_positionnement
 
 <p>L'idée ici est que nous allons donner aux onglets l'aspect d'un menu de navigation horizontal standard, et que nous allons donner aux panneaux l'aspect d'être superposés en utilisant un positionnement absolu. Nous vous donnerons également un peu de JavaScript à inclure dans votre page pour afficher le panneau correspondant lorsqu'un onglet est pressé, et nous donnerons un style à l'onglet lui-même. Vous n'aurez pas besoin de comprendre le JavaScript lui-même à ce stade, mais vous devriez penser à apprendre quelques bases de JavaScript dès que possible - plus les fonctionnalités de votre interface utilisateur deviennent complexes, plus il est probable que vous aurez besoin de JavaScript pour implémenter les fonctionnalités souhaitées.</p>
 
-<h3 id="General_setup">General setup</h3>
+<h3 id="General_setup">Configuration générale</h3>
 
-<p>To begin with, add the following between your opening and closing {{HTMLElement("style")}} tags:</p>
+<p>Pour commencer, ajoutez ce qui suit entre vos balises {{HTMLElement("style")}} d’ouverture et de fermeture :</p>
 
 <pre class="brush: css">html {
   font-family: sans-serif;
@@ -91,9 +91,9 @@ body {
   margin: 0;
 }</pre>
 
-<p>This is just some general setup to set a sans-serif font on our page, use the <code>border-box</code> {{cssxref("box-sizing")}} model, and get rid of the default {{htmlelement("body")}} margin.</p>
+<p>Ceci est juste une configuration générale pour définir une police sans empattement sur notre page, utiliser le modèle <code>border-box</code> {{cssxref("box-sizing")}}, et se débarrasser de lamarge de {{htmlelement("body")}} par défaut.</p>
 
-<p>Next, add the following just below your previous CSS:</p>
+<p>Ensuite, ajoutez ce qui suit juste en dessous de votre CSS précédent:</p>
 
 <pre class="brush: css">.info-box {
   width: 450px;
@@ -101,11 +101,11 @@ body {
   margin: 0 auto;
 }</pre>
 
-<p>This sets a specific width and height on the content, and centers it on the screen using the old <code>margin: 0 auto</code> trick. Previously in the course we advised against setting a fixed height on content containers if at all possible; it is ok in this circumstance because we have fixed content in our tabs. It also looks a bit jarring to have different tabs at different heights.</p>
+<p>Cela définit une largeur et une hauteur spécifiques sur le contenu, et le centre sur l’écran en utilisant l’ancienne astuce  <code>margin: 0 auto</code>. Précédemment dans le cours, nous avons déconseillé de définir une hauteur fixe sur les conteneurs de contenu si possible; c’est ok dans cette circonstance parce que nous avons du contenu fixe dans nos onglets. Il semble également un peu choquant d’avoir différents onglets à différentes hauteurs.</p>
 
-<h3 id="Styling_our_tabs">Styling our tabs</h3>
+<h3 id="Styling_our_tabs">2.	Styliser nos onglets</h3>
 
-<p>Now we want to style tabs to look like tabs — basically, these are a horizontal navigation menu, but instead of loading different web pages when they are clicked on like we've seen previously in the course, they cause different panels to be displayed on the same page. First, add the following rule at the bottom of your CSS to remove the default {{cssxref("padding-left")}} and {{cssxref("margin-top")}} from the unordered list:</p>
+<p>Maintenant, nous voulons styliser les onglets pour qu’ils ressemblent à des onglets - fondamentalement, il s’agit d’un menu de navigation horizontal, mais au lieu de charger différentes pages Web lorsqu’elles sont cliquées comme nous l’avons vu précédemment dans le cours, elles provoquent l’affichage de différents panneaux sur la même page. Tout d’abord, ajoutez la règle suivante en bas de votre CSS pour supprimer le  {{cssxref("padding-left")}} et {{cssxref("margin-top")}} par défaut de la liste non ordonnée :</p>
 
 <pre class="brush: css">.info-box ul {
   padding-left: 0;
@@ -113,12 +113,12 @@ body {
 }</pre>
 
 <div class="note">
-<p><strong>Note</strong>: We are using descendant selectors with <code>.info-box</code> at the start of the chain throughout this example — this is so that we can insert this feature into a page with other content already on it, without fear of interfering with the styles applied to other parts of the page.</p>
+<p><strong>Note</strong>: Nous utilisons des sélecteurs descendants avec <code>.info-box</code> au début de la chaîne tout au long de cet exemple — ceci afin que nous puissions insérer cette fonctionnalité dans une page avec d’autres contenus déjà dessus, sans craindre d’interférer avec les styles appliqués à d’autres parties de la page.</p>
 </div>
 
-<p>Next, we'll style the horizontal tabs — the list items are all floated left to make them sit in a line together, their {{cssxref("list-style-type")}} is set to <code>none</code> to get rid of the bullets, and their {{cssxref("width")}} is set to <code>150px</code> so they will comfortably fit across the info-box. The {{htmlelement("a")}} elements are set to {{cssxref("display")}} inline-block so they will sit in a line but still be stylable, and they are styled appropriately for tab buttons, using a variety of other properties.</p>
+<p>Ensuite, nous allons styliser les onglets horizontaux - les éléments de liste sont tous flottants à gauche pour les faire s’asseoir dans une ligne ensemble, leur {{cssxref("list-style-type")}} est défini sur <code>none</code> pour se débarrasser des puces, et leur {{cssxref("width")}} est définie à <code>150px</code> 150px  afin qu’ils s’adaptent confortablement à travers l’infobox. Les {{htmlelement("a")}} sont définis pour {{cssxref("display")}} inline-block afin qu’ils rentrent dans une ligne tout en restant stylisable,et ils sont stylisés de manière appropriée pour les boutons de tabulation, à l’aide d’une variété d’autres propriétés.</p>
 
-<p>Add the following CSS:</p>
+<p>Ajoutez le CSS suivant :</p>
 
 <pre class="brush: css">.info-box li {
   float: left;
@@ -136,7 +136,7 @@ body {
   text-align: center;
 }</pre>
 
-<p>Finally for this section we'll set some styles on the link states. First, we'll set the <code>:focus</code> and <code>:hover</code> states of the tabs to look different when they are focused/hovered, providing users with some visual feedback. Secondly, we'll set a rule that puts the same styling on one of the tabs when a <code>class</code> of <code>active</code> is present on it. We will set this using JavaScript when a tab is clicked on. Place the following CSS below your other styles:</p>
+<p>Enfin, pour cette section, nous allons définir quelques styles sur les états de lien. Tout d’abord, nous allons définir les états  <code>:focus</code> et <code>:hover</code> des onglets pour qu’ils soient différents lorsqu’ils sont focalisés/survolés, offrant aux utilisateurs un retour visuel. Deuxièmement, nous allons définir une règle qui met le même style sur l’un des onglets lorsqu’une <code>class</code> est <code>active</code> est présente dessus. Nous définirons cela à l’aide de JavaScript lorsque vous cliquerez sur un onglet. Placez le CSS suivant sous vos autres styles :</p>
 
 <pre class="brush: css">.info-box li a:focus, .info-box li a:hover {
   background-color: #a60000;
@@ -148,11 +148,11 @@ body {
   color: white;
 }</pre>
 
-<h3 id="Styling_the_panels">Styling the panels</h3>
+<h3 id="Styling_the_panels">3.	Stylisation des panneaux</h3>
 
-<p>The next job is to style our panels. Let's get going!</p>
+<p>Le prochain travail consiste à styliser nos panneaux. Allons-y!</p>
 
-<p>First, of all, add the following rule to style the <code>.panels</code> {{htmlelement("div")}} container. Here we simply set a fixed {{cssxref("height")}} to make sure the panels fit snugly inside the info-box, {{cssxref("position")}} <code>relative</code> to set the {{htmlelement("div")}} as the positioning context, so you can then place positioned child elements relative to it and not the {{htmlelement("html")}} element, and finally we {{cssxref("clear")}} the float set in the CSS above so that it doesn't interfere with the remainder of the layout.</p>
+<p>Tout d’abord, ajoutez la règle suivante pour styliser le conteneur <code>.panels</code> {{htmlelement("div")}} . Ici, nous définissons simplement une {{cssxref("height")}} fixe pour nous assurer que les panneaux s’adaptent parfaitement à l’intérieur de l'info-box, {{cssxref("position")}} <code>relative</code> pour définir le {{htmlelement("div")}} comme contexte de positionnement, afin que vous puissiez ensuite placer les éléments enfants positionnés par rapport à elle et non par rapport à l'élement {{htmlelement("html")}}, et enfin nous {{cssxref("clear")}} le float défini dans le CSS ci-dessus afin qu’il n’interfère pas avec le reste de la mise en page..</p>
 
 <pre class="brush: css">.info-box .panels {
   height: 352px;
@@ -178,9 +178,9 @@ body {
   z-index: 1;
 }</pre>
 
-<h3 id="Adding_our_JavaScript">Adding our JavaScript</h3>
+<h3 id="Adding_our_JavaScript">Ajout de notre JavaScript</h3>
 
-<p>The final step to getting this feature working is to add some JavaScript. Put the following block of code, exactly as written in between your opening and closing {{htmlelement("script")}} tags (you'll find these below the HTML content):</p>
+<p>La dernière étape pour faire fonctionner cette fonctionnalité consiste à ajouter du code JavaScript. Placez le bloc de code suivant, exactement comme écrit entre votre balise d'ouverture et de fermeture {{htmlelement("script")}} (vous les trouverez en fin du contenu HTML):</p>
 
 <pre>var tabs = document.querySelectorAll('.info-box li a');
 var panels = document.querySelectorAll('.info-box article');
@@ -206,34 +206,34 @@ function setTabHandler(tab, tabPos) {
   }
 }</pre>
 
-<p>This code does the following:</p>
+<p>Ce code effectue les opérations suivantes :</p>
 
 <ul>
- <li>First we save a reference to all the tabs and all the panels in two variables called <code>tabs</code> and <code>panels</code>, so we can easily do things to them later on.</li>
- <li>Then we use a <code>for</code> loop to cycle through all the tabs and run a function called <code>setTabHandler()</code> on each one, which sets up the functionality that should occur when each one is clicked on. When run, the function is passed a reference to the particular tab it is being run for, and an index number <code>i</code> that indentifies the tab's position in the <code>tabs</code> array.</li>
- <li>In the <code>setTabHandler()</code> function, the tab has an <code>onclick</code> event handler set on it, so that when the tab is clicked, the following occurs:
+ <li>1.	Tout d’abord, nous enregistrons une référence à tous les onglets et à tous les panneaux dans deux variables  <code>tabs</code> and <code>panels</code>, afin que nous puissions facilement les modifier plus tard.</li>
+ <li>2.	Ensuite, nous utilisons une boucle <code>for</code> pour parcourir tous les onglets et exécuter une fonction appelée <code>setTabHandler()</code> sur chacun d’eux, qui configure les fonctionnalités qui doivent se produire lorsque l’on clique sur chacun d’eux. Lors de l’exécution, la fonction reçoit une référence à l’onglet particulier pour lequel elle est exécutée et un numéro d’index <code>i</code> qui identifie la position de l’onglet dans le <code>tabs</code> array.</li>
+ <li>3.	Dans la fonction <code>setTabHandler()</code>, l’onglet a un gestionnaire d’événements  <code>onclick</code> défini sur elle, de sorte que lorsque l’utilisateur clique sur l’onglet, les événements suivants se produisent :
   <ul>
-   <li>A <code>for</code> loop is used to cycle through all the tabs and remove any classes that are present on them.</li>
-   <li>A <code>class</code> of <code>active</code> is set on the tab that was clicked on — remember from earlier that this class has an associated rule in the CSS that sets the same {{cssxref("color")}} and {{cssxref("background-color")}} on the tab as the panels are styled with.</li>
-   <li>A <code>for</code> loop is used to cycle through all the panels and remove any classes that are present on them.</li>
-   <li>A class of <code>active-panel</code> is set on the panel that corresponds to the tab that was clicked on — remember from earlier that this class has an associated rule in the CSS that sets its {{cssxref("z-index")}} to 1, making it appear over the top of the other panels.</li>
+   <li>	Une boucle <code>for</code> est utilisée pour parcourir tous les onglets et supprimer toutes les classes qui y sont présentes.</li>
+   <li> Une <code>class</code> <code>active</code> est définie sur l’onglet sur lequel vous avez cliqué - rappelez-vous que cette classe a une règle associée dans le CSS qui définit la même couleur {{cssxref("color")}} et {{cssxref("background-color")}} sur l’onglet que pour les panneaux.</li>
+   <li> Une boucle <code>for</code> est utilisée pour parcourir tous les panneaux et supprimer toutes les classes qui y sont présentes.</li>
+   <li> Une classe de <code>active-panel</code> est définie sur le panneau qui correspond à l’onglet sur lequel vous avez cliqué — rappelez-vous précédemment que cette classe a une règle associée dans le CSS qui définit son {{cssxref("z-index")}} à 1, ce qui le fait apparaître au-dessus des autres panneaux.</li>
   </ul>
  </li>
 </ul>
 
-<p>That's it for the first example. Keep your code open, as we'll be adding to it in the second one.</p>
+<p>C’est tout pour le premier exemple. Gardez votre code ouvert, car nous l’ajouterons dans le second.</p>
 
-<h2 id="A_fixed_position_tabbed_info-box">A fixed position tabbed info-box</h2>
+<h2 id="A_fixed_position_tabbed_info-box">B.	Une infobox à onglets à position fixe</h2>
 
-<p>In our second example, we will take our first example — our info-box — and add it into the context of a full web page. But not only that — we'll give it fixed position so that it stays in the same position in the browser window. When the main content scrolls, the info-box will stay in the same position on the screen. Our finished example will look like this:</p>
+<p>Dans notre deuxième exemple, nous allons prendre notre premier exemple — notre info-box — et l’ajouter dans le contexte d’une page Web complète. Mais non seulement cela - nous lui donnerons une position fixe afin qu’il reste dans la même position dans la fenêtre du navigateur. Lorsque le contenu principal défile, l’infobox reste dans la même position à l’écran. Notre exemple fini ressemblera à ceci :</p>
 
 <p><img alt="" src="https://mdn.mozillademos.org/files/13364/fixed-info-box.png" style="border-style: solid; border-width: 1px; display: block; height: 585px; margin: 0px auto; width: 1118px;"></p>
 
 <div class="note">
-<p><strong>Note</strong>: You can see the finished example running live at <a href="http://mdn.github.io/learning-area/css/css-layout/practical-positioning-examples/fixed-info-box.html">fixed-info-box.html</a> (<a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/fixed-info-box.html">source code</a>). Check it out to get an idea of what you will be building in this section of the article.</p>
+<p><strong>Note</strong>: Vous pouvez voir l’exemple terminé en live à <a href="http://mdn.github.io/learning-area/css/css-layout/practical-positioning-examples/fixed-info-box.html">fixed-info-box.html</a> (<a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/fixed-info-box.html">source code</a>). Consultez-le pour avoir une idée de ce que vous allez construire dans cette section de l’article.</p>
 </div>
 
-<p>As a starting point, you can use your completed example from the first section of the article, or make a local copy of <a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/info-box.html">info-box.html</a> from our Github repo.</p>
+<p>Comme point de départ, vous pouvez utiliser l’exemple que vous avez rempli de la première section de l’article, ou faire une copie locale de <a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/info-box.html">info-box.html</a> à partir de notre dépôt Github .</p>
 
 <h3 id="HTML_additions">HTML additions</h3>
 
@@ -252,14 +252,14 @@ function setTabHandler(tab, tabPos) {
 &lt;/section&gt;</pre>
 
 <div class="note">
-<p><strong>Note</strong>: You can feel free to change the fake content for some real content if you like.</p>
+<p><strong>Note</strong>: Vous pouvez vous sentir libre de changer le faux contenu pour du vrai contenu si vous le souhaitez.</p>
 </div>
 
-<h3 id="Changes_to_the_existing_CSS">Changes to the existing CSS</h3>
+<h3 id="Changes_to_the_existing_CSS">2.	Modifications apportées au CSS existant</h3>
 
-<p>Next we need to make some small changes to the existing CSS, to get the info-box placed and positioned. Change your <code>.info-box</code> rule to get rid of <code>margin: 0 auto;</code> (we no longer want the info-box centered), add {{cssxref("position")}}<code>: fixed;</code>, and stick it to the {{cssxref("top")}} of the browser viewport.</p>
+<p>Ensuite, nous devons apporter quelques petites modifications au CSS existant, pour que l’infobox soit placée et positionnée. Modifiez votre règle <code>.info-box</code> pour vous débarrasser de <code>margin: 0 auto;</code> (on ne veut plus de l’infobox centrée), ajouter {{cssxref("position")}}<code>: fixed;</code>, et collez-le au {{cssxref("top")}} de la fenêtre d’affichage du navigateur.</p>
 
-<p>It should now look like this:</p>
+<p>Il devrait maintenant ressembler à ceci:</p>
 
 <pre class="brush: css">.info-box {
   width: 450px;
@@ -268,9 +268,9 @@ function setTabHandler(tab, tabPos) {
   top: 0;
 }</pre>
 
-<h3 id="Styling_the_main_content">Styling the main content</h3>
+<h3 id="Styling_the_main_content">3.	Stylisation du contenu principal</h3>
 
-<p>The only thing left for this example is to provide the main content with some styling. Add the following rule underneath the rest of your CSS:</p>
+<p>La seule chose qui reste pour cet exemple est de fournir le contenu principal avec un certain style. Ajoutez la règle suivante sous le reste de votre CSS :</p>
 
 <pre class="brush: css">.fake-content {
   background-color: #a60000;
@@ -280,23 +280,23 @@ function setTabHandler(tab, tabPos) {
   margin-left: 470px;
 }</pre>
 
-<p>To start with, we give the content the same {{cssxref("background-color")}}, {{cssxref("color")}}, and {{cssxref("padding")}} as the info-box panels. We then give it a large {{cssxref("margin-left")}} to move it over to the right, making space for the info-box to sit in, so it is not overlapping anything else.</p>
+<p>Pour commencer, nous donnons au contenu la même couleur {{cssxref("background-color")}}, {{cssxref("color")}}, et {{cssxref("padding")}} que les panneaux de l’infobox. . Nous lui donnons ensuite une grande {{cssxref("margin-left")}} pour le déplacer vers la droite, en faisant de la place pour que l’infobox puisse s’asseoir, afin qu’il ne chevauche rien d’autre.</p>
 
-<p>This marks the end of the second example; we hope you'll find the third just as interesting.</p>
+<p>Cela marque la fin du deuxième exemple ; nous espérons que vous trouverez le troisième tout aussi intéressant.</p>
 
-<h2 id="A_sliding_hidden_panel">A sliding hidden panel</h2>
+<h2 id="A_sliding_hidden_panel">Un panneau caché coulissant</h2>
 
-<p>The final example we'll present here is a panel that slides on and off the screen at the press of an icon — as mentioned earlier, this is popular for situations like mobile layouts, where the available screen spaces is small, so you don't want to use up most of it by showing a menu or info panel instead of the useful content.</p>
+<p>Le dernier exemple que nous présenterons ici est un panneau qui glisse sur et en dehors de l’écran en appuyant sur une icône - comme mentionné précédemment, c’est populaire pour des situations telles que les mises en page mobiles, où les espaces d’écran disponibles sont petits, vous ne voulez donc pas en utiliser la majeure partie en affichant un menu ou un panneau d’informations au lieu du contenu utile.</p>
 
-<p>Our finished example will look like this:</p>
+<p>Notre exemple fini ressemblera à ceci:</p>
 
 <p><img alt="" src="https://mdn.mozillademos.org/files/13366/hidden-sliding-panel.png" style="border-style: solid; border-width: 1px; display: block; height: 521px; margin: 0px auto; width: 950px;"></p>
 
 <div class="note">
-<p><strong>Note</strong>: You can see the finished example running live at <a href="http://mdn.github.io/learning-area/css/css-layout/practical-positioning-examples/hidden-info-panel.html">hidden-info-panel.html</a> (<a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/hidden-info-panel.html">source code</a>). Check it out to get an idea of what you will be building in this section of the article.</p>
+<p><strong>Note</strong>: Vous pouvez voir l’exemple terminé en  live à <a href="http://mdn.github.io/learning-area/css/css-layout/practical-positioning-examples/hidden-info-panel.html">hidden-info-panel.html</a> (<a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/hidden-info-panel.html">source code</a>). Check it out to get an idea of what you will be building in this section of the article.</p>
 </div>
 
-<p>As a starting point, make a local copy of <a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/hidden-info-panel-start.html">hidden-info-panel-start.html</a> from our Github repo. This doesn't follow on from the previous example, so a fresh start file is required. Let's have a look at the HTML in the file:</p>
+<p>Comme point de départ, faites une copie locale de <a href="https://github.com/mdn/learning-area/blob/master/css/css-layout/practical-positioning-examples/hidden-info-panel-start.html">hidden-info-panel-start.html</a> à partir de notre dépôt Github. Cela ne fait pas suite à l’exemple précédent, donc un nouveau démarrage est requis. Jetons un coup d’œil au code HTML dans le fichier:</p>
 
 <pre class="brush: css">&lt;label for="toggle"&gt;❔&lt;/label&gt;
 &lt;input type="checkbox" id="toggle"&gt;
@@ -306,19 +306,19 @@ function setTabHandler(tab, tabPos) {
 
 &lt;/aside&gt;</pre>
 
-<p>To start with here we've got a {{htmlelement("label")}} element and an {{htmlelement("input")}} element — <code>&lt;label&gt;</code> elements are normally used to associate a text label with a form element for accessibility purposes (allowing a screen user to see what description goes with what form element). Here it is associated with the <code>&lt;input&gt;</code> checkbox using the <code>for</code> and <code>id</code> attributes.</p>
+<p>Pour commencer ici, nous avons un element {{htmlelement("label")}} et un élement {{htmlelement("input")}} — <code>&lt;label&gt;</code> sont normalement utilisés pour associer une étiquette de texte à un élément de formulaire à des fins d’accessibilité (permettant à un utilisateur d’écran de voir quelle description va avec quel élément de formulaire). Ici, il est associé à la checkbox <code>&lt;input&gt;</code> en utilisant les attributs  <code>for</code> et <code>id</code> attributes.</p>
 
 <div class="note">
-<p><strong>Note</strong>: We've put a special question mark character into our HTML to act as our info icon — this represents the button that will be pressed to show/hide the panel.</p>
+<p><strong>Note</strong>: Nous avons mis un point d’interrogation spécial dans notre code HTML pour agir comme notre icône d’information - cela représente le bouton qui sera enfoncé pour afficher / masquer le panneau.</p>
 </div>
 
-<p>Here we are going to use these elements for a slightly different purpose — another useful side effect of <code>&lt;label&gt;</code> elements is that you can click a checkbox's label to check the checkbox, as well as just the checkbox itself. This has led to the well-known <a href="https://css-tricks.com/the-checkbox-hack/">checkbox hack</a>, which provides a JavaScript-free way of controlling an element by toggling a button. The element we'll be controlling is the {{htmlelement("aside")}} element that follows the other two (we've left its contents out of the above code listing for brevity).</p>
+<p>Ici, nous allons utiliser ces éléments dans un but légèrement différent - un autre effet secondaire utile de l'élement <code>&lt;label&gt;</code>  est que vous pouvez cliquer sur l’étiquette d’une case à cocher pour vérifier la case à cocher, ainsi que sur la case à cocher elle-même. Cela a conduit au h <a href="https://css-tricks.com/the-checkbox-hack/">ack de case à cocher bien connu</a>, qui fournit un moyen sans JavaScript de contrôler un élément en découlant un bouton. L’élément que nous allons contrôler est l'élément {{htmlelement("aside")}}  qui suit les deux autres (nous avons laissé son contenu hors de la liste de code ci-dessus pour plus de concision).</p>
 
-<p>In the below sections we'll explain how this all works.</p>
+<p>Dans les sections ci-dessous, nous expliquerons comment tout cela fonctionne.</p>
 
-<h3 id="Styling_the_form_elements">Styling the form elements</h3>
+<h3 id="Styling_the_form_elements">II.	Application d’un style aux éléments de formulaire</h3>
 
-<p>First let's deal with the form elements — add the following CSS in between your {{htmlelement("style")}} tags:</p>
+<p>Tout d’abord, traitons les éléments de formulaire - ajoutez le CSS suivant entre vos balises {{htmlelement("style")}} :</p>
 
 <pre class="brush: css">label[for="toggle"] {
   font-size: 3rem;
@@ -334,7 +334,7 @@ input[type="checkbox"] {
   top: -100px;
 }</pre>
 
-<p>The first rule styles the <code>&lt;label&gt;</code>; here we've:</p>
+<p>La première règle s’applique au <code>&lt;label&gt;</code>; nous avons ici :</p>
 
 <ul>
  <li>Set a large {{cssxref("font-size")}} to make the icon nice and big.</li>
